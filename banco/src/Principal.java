@@ -1,10 +1,15 @@
 public class Principal {
     public static void main(String[] args) {
-        Conta cc = new contaCorrente();
-        cc.depositar(1000);
-        Conta poupanca = new contaPoupanca();
+        Cliente claudio = new Cliente();
+        claudio.setNome("Claudio");
+        
+        Conta contaCorrente = new contaCorrente(claudio);
+        Conta poupanca = new contaPoupanca(claudio);
     
-        cc.imprimirExtrato();
+        contaCorrente.depositar(1000);
+        contaCorrente.transferir(100, poupanca);
+
+        contaCorrente.imprimirExtrato();
         poupanca.imprimirExtrato();
     
     }

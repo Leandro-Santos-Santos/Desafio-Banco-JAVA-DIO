@@ -13,11 +13,6 @@ public abstract class Conta implements iConta{
         this.cliente = cliente;
     }
 
-    public Conta() {
-        this.agencia = AGENCIA_PADRAO;
-        this.numero = SEQUENCIAL++;
-    }
-
     public int getAgencia() {
         return agencia;
     }
@@ -33,20 +28,17 @@ public abstract class Conta implements iConta{
     @Override
     public void sacar(double valor) {
         saldo -= valor;
-        throw new UnsupportedOperationException("Unimplemented method 'sacar'");
     }
 
     @Override
     public void depositar(double valor) {
         saldo += valor;
-        throw new UnsupportedOperationException("Unimplemented method 'depositar'");
     }
 
     @Override
-    public void transferir(double valor, Conta contaDestino) {
+    public void transferir(double valor, iConta contaDestino) {
         this.sacar(valor);
         contaDestino.depositar(valor);
-        throw new UnsupportedOperationException("Unimplemented method 'transferir'");
     }
 
     protected void imprimirInfosComuns() {
